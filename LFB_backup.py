@@ -1,7 +1,9 @@
 
 import streamlit as st 
 import time
-import matplotlib.pyplot as plt
+import matplotlib
+matplotlib.use('Agg')
+from matplotlib import pyplot as plt
 import sklearn
 import numpy as np
 import pandas as pd
@@ -12,7 +14,6 @@ import collections
 from sklearn.linear_model import LinearRegression
 from sklearn.feature_selection import RFE
 from sklearn.svm import SVR
-import matplotlib.pyplot as plt
 import statsmodels.api as sm
 from fancyimpute import IterativeImputer # for imputation
 from sklearn.impute import SimpleImputer
@@ -21,7 +22,7 @@ from sklearn.linear_model import LinearRegression
 from sklearn.linear_model import Ridge, RidgeCV, Lasso # for penalised regression and feature engineering
 from sklearn.linear_model import LassoCV
 from sklearn.preprocessing import StandardScaler
-import seaborn as sns
+import seaborn as sns # For plotting
 from sklearn.ensemble import RandomForestRegressor
 import streamlit as st
 import random
@@ -86,7 +87,7 @@ the reforms that have been taking place in the agency in the last decade.\nThere
 
 st.markdown(open_p + item + close_p, unsafe_allow_html=True)
 
-n = 1500000 # work with the first 500000 row only for now
+n = 2500000 # work with the first 500000 row only for now
 
 # mile stones
 st.markdown("## Mile stones")
