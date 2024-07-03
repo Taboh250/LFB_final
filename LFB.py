@@ -24,6 +24,7 @@ import seaborn as sns
 from sklearn.ensemble import RandomForestRegressor
 import streamlit as st
 import random
+"""
 @st.cache_data # Saves data into a cache facilitates re-run
 def generate_random_value(x): 
   return random.uniform(0, x) 
@@ -31,7 +32,7 @@ a = generate_random_value(10)
 b = generate_random_value(20) 
 st.write(a) 
 st.write(b)
-
+"""
 # st.title ("Analysis  of Factors affecting London  Fire Brigade Response Time.")
 
 #pages=["Introduction to the project", "Difficulties encountered", "Mile stones"]

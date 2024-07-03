@@ -5,7 +5,6 @@ import matplotlib
 matplotlib.use('Agg')
 from matplotlib import pyplot as plt
 import sklearn
-import numpy as np
 import pandas as pd
 import os 
 import numpy as np
