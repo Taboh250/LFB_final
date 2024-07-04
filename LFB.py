@@ -3,11 +3,9 @@ import streamlit as st
 import time
 import matplotlib.pyplot as plt
 import sklearn
-import numpy as np
 import pandas as pd
 import os 
 import numpy as np
-import pandas as pd
 import collections
 from sklearn.linear_model import LinearRegression
 from sklearn.feature_selection import RFE
@@ -15,6 +13,8 @@ from sklearn.svm import SVR
 import matplotlib.pyplot as plt
 import statsmodels.api as sm
 from fancyimpute import IterativeImputer # for imputation
+from sklearn.experimental import enable_iterative_imputer  # noqa
+from sklearn.impute import IterativeImputer
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
 from sklearn.linear_model import Ridge, RidgeCV, Lasso # for penalised regression and feature engineering
@@ -73,7 +73,7 @@ the KNN imputation which works best on smaller datasets. The dataset consists of
 tables, one containing mobilisation data for the LFB and the other recording information 
 about the incidences.\nThe key joining both tables is the incidence number. During my analysis, 
 I realised that some incidence numbers were mutually exclusive, which means only present in one of 
-the datasets. This affected up to 34% of the incidence numbers. It was good that we still had almost 
+the datasets. This affected up to 34% of the incidence numbers. It was good that I still had almost 
 70% of the data left. This means that these 34% could be discarded without worry.\nThe incidence numbers 
 were not stored in the same format in both tables. In one table, the numerical parts were stored as 
 integers and in the other table as floats. But the significant numbers were the same. I solved this 
@@ -356,7 +356,7 @@ item='''The process uses multiple imputation techniques to fill in the missing d
 and then combines the results from multiple imputations to produce a final imputed dataset.\nAfter performing the
 MICE imputation, I compared the mean of the features after the imputaitonsto the mean 
 of the same columns before imputation and I observed very little difference. I also performed a correlation
-between the respectuve features before and after correlation and observed always a correlation coefficient > 0.9.\n
+between the respectuve features before and after imputation and observed always a correlation coefficient > 0.9.\n
 I also performed a linear regression analysis with the outcome variable of interest using the imputed data. I subsequently 
 obtain an r-squared value which will enable me assess the suitability 
 of this imputation method compared to others.'''
@@ -926,13 +926,13 @@ st.pyplot(plt.gcf())
 st.markdown("#### Conclusions")
 
 item='''I have used several complementary approaches to identify features or parameters 
-that best predict the attendance time. These include CalYear, 'FirstPumpArriving_AttendanceTim, 
-'TurnoutTimeSecon and 'TravelTimeSecc. Considering limited resources, it might not be cost-effective 
+that best predict the attendance time. These include CalYear, 'FirstPumpArriving_AttendanceTime, 
+'TurnoutTimeSecon and 'TravelTimeSec. Considering limited resources, it might not be cost-effective 
 to simultaneously improve performance in all these parameters. However, the linear regression shows 
 that the two outstanding contributors are the turnout time and even more importantly the travel time. 
 The travel time in turn has a correlation with the attendance time of the first arriving pump. 
 The travel time can hence be prioritised for action. Mechanisms can be put in place to enable LFB 
 to deploy to incident zones on time. Money could also be invested to develop drones that can help 
-fight fires.nds..'''
+fight fires.'''
 
 st.write(open_p + item + close_p, unsafe_allow_html=True)
