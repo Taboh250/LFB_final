@@ -173,7 +173,7 @@ st.write(open_p + itemb + close_p, unsafe_allow_html=True)
 #### merging the mobit and incidence data ####
 st.markdown("#### Merging the incidence and mobilisation data")
 
-itemb='''Note that there are three features that are common to the mobilisation and 
+itemb=''' There are three features that are common to the mobilisation and 
 incidence datasets and these include the incidence number, CalYear(year of the call), HourOfCall (the hour of the call).
 The incidence number being the most unique shared identifier,  will be used to merge the two datasets. 
 However, to merge the two data frames, I had to harmonise the formats of the incidence numbers in the two
@@ -352,7 +352,7 @@ merged_na_data_numeric = merged_data[missing_numeric_columns].drop(['ResourceMob
 ### MICE imputation ###
 #### mice imputation ####
 
-st.markdown("**Imputation by Multivariate Imputation by Chained Equations (MICE)**")
+st.markdown("**Imputation by Multiple Imputation by Chained Equations (MICE)**")
 
 item='''The process uses multiple imputation techniques to fill in the missing data 
 and then combines the results from multiple imputations to produce a final imputed dataset.\nAfter performing the
@@ -433,7 +433,7 @@ lm_mean = sm.OLS(y, X).fit()
 
 st.markdown("**Imputation by median**")
 
-item='''The imputation by median method replaces each missing value with the median value for that feature.
+item='''The imputation by median method replaces the missing values with the median value for that feature.
 One set back with this method is that variations in the data are missed out.\nAfter performing the
 median imputation, I compared the median of the features after the imputaitonsto the median 
 of the same columns before imputation and I observed very little difference. I also performed a correlation
